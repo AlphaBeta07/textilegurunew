@@ -168,40 +168,40 @@ export class MemStorage implements IStorage {
 
   // Initialize with sample educational content
   private initializeData() {
-    // Create 5 programs
+    // Create 5 textile programs
     const programsData: InsertProgram[] = [
       {
-        name: "Language Learning",
-        description: "Master new languages with our interactive audio-based learning program.",
-        imageUrl: "https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Fiber Science",
+        description: "Explore the fundamental properties of natural and synthetic textile fibers.",
+        imageUrl: "https://images.unsplash.com/photo-1497219055242-93359eeed651?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
         subjectsCount: 5,
         totalAudioCount: 30
       },
       {
-        name: "Mathematics",
-        description: "From basic arithmetic to advanced calculus with guided audio explanations.",
-        imageUrl: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Fabric Construction",
+        description: "Learn the principles and techniques of weaving, knitting, and non-woven fabric production.",
+        imageUrl: "https://images.unsplash.com/photo-1576437156647-81f4b36affa6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
         subjectsCount: 5,
         totalAudioCount: 30
       },
       {
-        name: "Science",
-        description: "Explore physics, chemistry, and biology through engaging audio content.",
-        imageUrl: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Textile Dyeing & Printing",
+        description: "Master the art and science of coloration and surface design for textiles.",
+        imageUrl: "https://images.unsplash.com/photo-1596464148416-e599dc56f4d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
         subjectsCount: 5,
         totalAudioCount: 30
       },
       {
-        name: "Programming",
-        description: "Learn coding with step-by-step audio tutorials and practical examples.",
-        imageUrl: "https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Apparel Manufacturing",
+        description: "Discover the processes behind garment production from pattern making to assembly.",
+        imageUrl: "https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
         subjectsCount: 5,
         totalAudioCount: 30
       },
       {
-        name: "Business",
-        description: "Develop business acumen with comprehensive audio courses and case studies.",
-        imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Sustainable Textiles",
+        description: "Explore eco-friendly materials, processes, and innovations in the textile industry.",
+        imageUrl: "https://images.unsplash.com/photo-1572731316712-a2d7c1fdf73c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
         subjectsCount: 5,
         totalAudioCount: 30
       }
@@ -212,107 +212,107 @@ export class MemStorage implements IStorage {
       this.programs.set(id, { ...program, id });
     });
 
-    // Create 5 subjects for each program
-    const languageSubjects: InsertSubject[] = [
+    // Create 5 subjects for Fiber Science program
+    const fiberScienceSubjects: InsertSubject[] = [
       {
         programId: 1,
-        name: "English",
-        description: "Master English with comprehensive audio lessons covering grammar, vocabulary, and conversation.",
-        imageUrl: "https://images.unsplash.com/photo-1546521343-4eb2c01aa44b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Natural Fibers",
+        description: "In-depth exploration of cotton, wool, silk, linen, and other natural textile fibers.",
+        imageUrl: "https://images.unsplash.com/photo-1595511890410-3c7d8399226b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
         chaptersCount: 6,
         durationHours: 10
       },
       {
         programId: 1,
-        name: "Spanish",
-        description: "Learn Spanish from beginner to advanced with interactive audio lessons and cultural insights.",
-        imageUrl: "https://images.unsplash.com/photo-1513026705753-bc3fffca8bf4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Synthetic Fibers",
+        description: "Comprehensive study of polyester, nylon, acrylic, and other man-made fibers.",
+        imageUrl: "https://images.unsplash.com/photo-1618372063992-8c3d0d451841?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
         chaptersCount: 6,
         durationHours: 12
       },
       {
         programId: 1,
-        name: "French",
-        description: "Discover French language and culture through structured audio lessons and practical examples.",
-        imageUrl: "https://images.unsplash.com/photo-1499678329028-101435549a4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Fiber Properties",
+        description: "Analysis of tensile strength, elasticity, absorbency, and other critical fiber characteristics.",
+        imageUrl: "https://images.unsplash.com/photo-1606913419156-31cf2822659b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
         chaptersCount: 6,
         durationHours: 9
       },
       {
         programId: 1,
-        name: "German",
-        description: "Build German language skills with audio lessons covering grammar, vocabulary, and pronunciation.",
-        imageUrl: "https://images.unsplash.com/photo-1599946347371-68eb71b16afc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Fiber Identification",
+        description: "Methods and techniques for identifying fiber types through microscopy and chemical tests.",
+        imageUrl: "https://images.unsplash.com/photo-1580893246395-52aead8960dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
         chaptersCount: 6,
         durationHours: 11
       },
       {
         programId: 1,
-        name: "Mandarin Chinese",
-        description: "Master Mandarin pronunciation and essential phrases with guided audio lessons.",
-        imageUrl: "https://images.unsplash.com/photo-1510146758428-e5e4b17b8b6a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Advanced Fibers",
+        description: "Exploration of high-performance and specialty fibers used in technical textiles.",
+        imageUrl: "https://images.unsplash.com/photo-1620331311520-246422e5a252?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
         chaptersCount: 6,
         durationHours: 14
       }
     ];
 
-    // Add math subjects
-    const mathSubjects: InsertSubject[] = [
+    // Add fabric construction subjects
+    const fabricSubjects: InsertSubject[] = [
       {
         programId: 2,
-        name: "Algebra",
-        description: "Learn algebraic concepts with step-by-step audio explanations and practice problems.",
-        imageUrl: "https://images.unsplash.com/photo-1509228627152-72ae9ae6848d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Weaving Fundamentals",
+        description: "Basic principles of warp and weft interlacement in fabric production.",
+        imageUrl: "https://images.unsplash.com/photo-1606830733744-0ad778449672?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
         chaptersCount: 6,
         durationHours: 8
       },
       {
         programId: 2,
-        name: "Geometry",
-        description: "Explore shapes, angles, and spatial relationships with audio-guided lessons.",
-        imageUrl: "https://images.unsplash.com/photo-1645326904648-0a70329e5828?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Knitting Technology",
+        description: "Comprehensive study of weft and warp knitting principles and structures.",
+        imageUrl: "https://images.unsplash.com/photo-1620139283213-cff4ddeadb63?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
         chaptersCount: 6,
         durationHours: 7
       },
       {
         programId: 2,
-        name: "Calculus",
-        description: "Master differentiation, integration, and applications with audio tutorials.",
-        imageUrl: "https://images.unsplash.com/photo-1544282618-a997e98ac3af?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Non-woven Textiles",
+        description: "Processes and applications of fibrous assemblies bonded by mechanical, chemical, or thermal means.",
+        imageUrl: "https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
         chaptersCount: 6,
         durationHours: 10
       },
       {
         programId: 2,
-        name: "Statistics",
-        description: "Understand data analysis and probability with practical audio examples.",
-        imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Textile Testing",
+        description: "Methods for evaluating fabric performance, quality, and durability.",
+        imageUrl: "https://images.unsplash.com/photo-1598204946632-6a61656096e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
         chaptersCount: 6,
         durationHours: 9
       },
       {
         programId: 2,
-        name: "Trigonometry",
-        description: "Learn about angles, triangles, and trigonometric functions through audio lessons.",
-        imageUrl: "https://images.unsplash.com/photo-1442202326922-55fa63ad1342?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Advanced Structures",
+        description: "Exploration of complex weaves, 3D fabrics, and technical textile structures.",
+        imageUrl: "https://images.unsplash.com/photo-1620628193165-5c9980f3e4be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
         chaptersCount: 6,
         durationHours: 6
       }
     ];
 
     // Add all subjects
-    [...languageSubjects, ...mathSubjects].forEach(subject => {
+    [...fiberScienceSubjects, ...fabricSubjects].forEach(subject => {
       const id = this.subjectsCounter++;
       this.subjects.set(id, { ...subject, id });
     });
 
-    // Create chapters for English subject
-    const englishChapters: InsertChapter[] = [
+    // Create chapters for Natural Fibers subject
+    const naturalFibersChapters: InsertChapter[] = [
       {
         subjectId: 1,
-        name: "Basic Grammar",
-        description: "Learn foundational English grammar rules with clear audio explanations.",
-        iconType: "book",
+        name: "Cotton",
+        description: "Comprehensive study of cotton fiber properties, production, and applications.",
+        iconType: "leaf",
         audioCount: 6,
         durationMinutes: 90,
         progress: 35,
@@ -320,9 +320,9 @@ export class MemStorage implements IStorage {
       },
       {
         subjectId: 1,
-        name: "Conversation",
-        description: "Practice everyday conversations with native speaker audio examples.",
-        iconType: "comment",
+        name: "Wool",
+        description: "Detailed exploration of wool fiber characteristics, processing, and end uses.",
+        iconType: "scissors",
         audioCount: 6,
         durationMinutes: 120,
         progress: 15,
@@ -330,9 +330,9 @@ export class MemStorage implements IStorage {
       },
       {
         subjectId: 1,
-        name: "Vocabulary",
-        description: "Build your English vocabulary with themed audio lessons and practice.",
-        iconType: "book-open",
+        name: "Silk",
+        description: "Deep dive into silk fiber production, properties, and luxury applications.",
+        iconType: "filter",
         audioCount: 6,
         durationMinutes: 108,
         progress: 50,
@@ -340,9 +340,9 @@ export class MemStorage implements IStorage {
       },
       {
         subjectId: 1,
-        name: "Pronunciation",
-        description: "Perfect your English pronunciation with detailed audio guidance.",
-        iconType: "microphone",
+        name: "Linen",
+        description: "Comprehensive study of flax fibers, linen production, and textile applications.",
+        iconType: "flower",
         audioCount: 6,
         durationMinutes: 90,
         progress: 0,
@@ -350,9 +350,9 @@ export class MemStorage implements IStorage {
       },
       {
         subjectId: 1,
-        name: "Writing",
-        description: "Develop writing skills with guided audio lessons and practical exercises.",
-        iconType: "pen",
+        name: "Hemp and Jute",
+        description: "Analysis of bast fibers, their properties, and industrial applications.",
+        iconType: "sprout",
         audioCount: 6,
         durationMinutes: 120,
         progress: 0,
@@ -360,9 +360,9 @@ export class MemStorage implements IStorage {
       },
       {
         subjectId: 1,
-        name: "Listening",
-        description: "Enhance listening comprehension through diverse audio materials and exercises.",
-        iconType: "headphones",
+        name: "Emerging Natural Fibers",
+        description: "Introduction to novel natural fibers and their potential in sustainable textiles.",
+        iconType: "globe",
         audioCount: 6,
         durationMinutes: 108,
         progress: 65,
@@ -371,65 +371,65 @@ export class MemStorage implements IStorage {
     ];
 
     // Add chapters
-    englishChapters.forEach(chapter => {
+    naturalFibersChapters.forEach(chapter => {
       const id = this.chaptersCounter++;
       this.chapters.set(id, { ...chapter, id });
     });
 
-    // Create audio lessons for Basic Grammar chapter
-    const grammarLessons: InsertAudioLesson[] = [
+    // Create audio lessons for Cotton chapter
+    const cottonLessons: InsertAudioLesson[] = [
       {
         chapterId: 1,
-        title: "Nouns and Articles",
-        description: "Understanding noun types and article usage in English",
+        title: "Cotton Cultivation",
+        description: "Global cotton farming practices and sustainable agricultural methods",
         durationSeconds: 300,
         completed: true,
-        audioUrl: "/audio/grammar/nouns.mp3"
+        audioUrl: "/audio/cotton/cultivation.mp3"
       },
       {
         chapterId: 1,
-        title: "Present Tense Verbs",
-        description: "How to use present simple and present continuous tenses",
+        title: "Fiber Structure",
+        description: "Microscopic analysis of cotton fiber morphology and cellular structure",
         durationSeconds: 390,
         completed: true,
-        audioUrl: "/audio/grammar/present-tense.mp3"
+        audioUrl: "/audio/cotton/structure.mp3"
       },
       {
         chapterId: 1,
-        title: "Past Tense Verbs",
-        description: "Understanding regular and irregular past tense forms",
+        title: "Physical Properties",
+        description: "Tensile strength, elasticity, and absorbency characteristics of cotton",
         durationSeconds: 435,
         completed: false,
-        audioUrl: "/audio/grammar/past-tense.mp3"
+        audioUrl: "/audio/cotton/properties.mp3"
       },
       {
         chapterId: 1,
-        title: "Future Tense",
-        description: "Different ways to express future actions in English",
+        title: "Cotton Processing",
+        description: "From harvesting to ginning and bale formation in the cotton industry",
         durationSeconds: 405,
         completed: false,
-        audioUrl: "/audio/grammar/future-tense.mp3"
+        audioUrl: "/audio/cotton/processing.mp3"
       },
       {
         chapterId: 1,
-        title: "Prepositions",
-        description: "Using prepositions of time, place and movement correctly",
+        title: "Cotton Varieties",
+        description: "Exploring different species and varieties of cotton grown worldwide",
         durationSeconds: 330,
         completed: false,
-        audioUrl: "/audio/grammar/prepositions.mp3"
+        audioUrl: "/audio/cotton/varieties.mp3"
       },
       {
         chapterId: 1,
-        title: "Adjectives and Adverbs",
-        description: "Using descriptive words and understanding their placement",
+        title: "Organic Cotton",
+        description: "Sustainable practices in organic cotton farming and certification",
         durationSeconds: 370,
         completed: false,
-        audioUrl: "/audio/grammar/adjectives-adverbs.mp3"
+        audioUrl: "/audio/cotton/organic.mp3"
       }
     ];
 
     // Add audio lessons
-    grammarLessons.forEach(lesson => {
+    cottonLessons.forEach(lesson => {
       const id = this.audioLessonsCounter++;
       this.audioLessons.set(id, { ...lesson, id });
     });

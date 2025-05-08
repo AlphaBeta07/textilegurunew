@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'wouter';
-import { GraduationCap, Search, Menu } from 'lucide-react';
+import { Search, Menu, Scissors, Shirt } from 'lucide-react';
 import { LanguageSelector } from './language-selector';
 import { Input } from '@/components/ui/input';
 
@@ -18,10 +18,16 @@ export function Header() {
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Link href="/">
-              <a className="flex items-center space-x-2">
-                <GraduationCap className="text-primary text-2xl" />
-                <span className="font-sans font-bold text-xl md:text-2xl text-primary">EduVision</span>
-              </a>
+              <div className="flex items-center space-x-2">
+                <div className="relative">
+                  <Scissors className="text-primary text-2xl transform rotate-45" />
+                  <Shirt className="text-primary text-2xl absolute top-0.5 left-0.5 opacity-70" />
+                </div>
+                <div className="font-sans font-bold text-xl md:text-2xl">
+                  <span className="text-primary">Textile</span>
+                  <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">Guru</span>
+                </div>
+              </div>
             </Link>
           </div>
           
@@ -30,7 +36,7 @@ export function Header() {
             <div className="hidden md:flex items-center relative">
               <Input 
                 type="text" 
-                placeholder="Search programs..." 
+                placeholder="Search textile programs..." 
                 className="w-64 lg:w-80 px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50"
               />
               <button className="absolute right-3 text-gray-400">
@@ -57,7 +63,7 @@ export function Header() {
             <div className="flex items-center relative mb-4">
               <Input 
                 type="text" 
-                placeholder="Search programs..." 
+                placeholder="Search textile programs..." 
                 className="w-full px-3 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50"
               />
               <button className="absolute right-3 text-gray-400">
