@@ -54,7 +54,11 @@ export function ChapterCard({ chapter, programId, subjectId }: ChapterCardProps)
             </span>
           </div>
           <div className="mt-4">
-            <Progress value={chapter.progress} className="h-2 bg-gray-100" indicatorClassName="bg-gradient-to-r from-primary to-accent" />
+            <Progress 
+              value={chapter.progress} 
+              className="h-2 bg-gray-100" 
+              indicatorClassName="bg-gradient-to-r from-primary to-accent" 
+            />
           </div>
           <div className="mt-2 flex justify-between text-xs text-gray-500">
             <span>Progress: {chapter.progress}%</span>
