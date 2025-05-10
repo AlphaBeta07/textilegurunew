@@ -1,8 +1,8 @@
 import { 
-  Program, InsertProgram, programs,
-  Subject, InsertSubject, subjects,
-  Chapter, InsertChapter, chapters,
-  AudioLesson, InsertAudioLesson, audioLessons
+  Program, InsertProgram, 
+  Subject, InsertSubject, 
+  Chapter, InsertChapter, 
+  AudioLesson, InsertAudioLesson,
 } from "@shared/schema";
 
 export interface IStorage {
@@ -20,7 +20,7 @@ export interface IStorage {
   getChaptersBySubjectId(subjectId: number): Promise<Chapter[]>;
   getChapterById(id: number): Promise<Chapter | undefined>;
   createChapter(chapter: InsertChapter): Promise<Chapter>;
-  updateChapterProgress(id: number, progress: number, completedLessons: number): Promise<Chapter>;
+  //updateChapterProgress(id: number, //progress: number, completedLessons: number): Promise<Chapter>;
 
   // Audio lesson methods
   getAudioLessonsByChapterId(chapterId: number): Promise<AudioLesson[]>;
@@ -106,21 +106,21 @@ export class MemStorage implements IStorage {
     return newChapter;
   }
 
-  async updateChapterProgress(id: number, progress: number, completedLessons: number): Promise<Chapter> {
-    const chapter = this.chapters.get(id);
-    if (!chapter) {
-      throw new Error(`Chapter with ID ${id} not found`);
-    }
+  // async updateChapterProgress(id: number, //progress: number, completedLessons: number): Promise<Chapter> {
+  //   const chapter = this.chapters.get(id);
+  //   if (!chapter) {
+  //     throw new Error(`Chapter with ID ${id} not found`);
+  //   }
     
-    const updatedChapter: Chapter = { 
-      ...chapter, 
-      progress, 
-      completedLessons 
-    };
+  //   const updatedChapter: Chapter = { 
+  //     ...chapter, 
+  //     progress, 
+  //     completedLessons 
+  //   };
     
-    this.chapters.set(id, updatedChapter);
-    return updatedChapter;
-  }
+  //   this.chapters.set(id, updatedChapter);
+  //   return updatedChapter;
+  // }
 
   // Audio lesson methods
   async getAudioLessonsByChapterId(chapterId: number): Promise<AudioLesson[]> {
@@ -154,14 +154,14 @@ export class MemStorage implements IStorage {
     this.audioLessons.set(id, updatedAudioLesson);
     
     // Update chapter progress
-    const chapter = await this.getChapterById(audioLesson.chapterId);
-    if (chapter) {
-      const allLessons = await this.getAudioLessonsByChapterId(chapter.id);
-      const completedLessons = allLessons.filter(lesson => lesson.completed || lesson.id === id).length;
-      const progress = Math.round((completedLessons / allLessons.length) * 100);
+    // const chapter = await this.getChapterById(audioLesson.chapterId);
+    // if (chapter) {
+    //   const allLessons = await this.getAudioLessonsByChapterId(chapter.id);
+    //   const completedLessons = allLessons.filter(lesson => lesson.completed || lesson.id === id).length;
+    //   const progress = Math.round((completedLessons / allLessons.length) * 100);
       
-      await this.updateChapterProgress(chapter.id, progress, completedLessons);
-    }
+    //   await this.updateChapterProgress(chapter.id, progress, completedLessons);
+    // }
     
     return updatedAudioLesson;
   }
@@ -170,41 +170,42 @@ export class MemStorage implements IStorage {
   private initializeData() {
     // Create 5 textile programs
     const programsData: InsertProgram[] = [
-      {
-        name: "Fiber Science",
-        description: "Explore the fundamental properties of natural and synthetic textile fibers.",
-        imageUrl: "https://images.unsplash.com/photo-1497219055242-93359eeed651?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-        subjectsCount: 5,
-        totalAudioCount: 30
+       {
+      name: "Textile Chemistry",
+      description: "",
+      imageUrl: "",
+      subjectsCount: 5,
+      totalAudioCount: 30
       },
       {
-        name: "Fabric Construction",
-        description: "Learn the principles and techniques of weaving, knitting, and non-woven fabric production.",
-        imageUrl: "https://images.unsplash.com/photo-1576437156647-81f4b36affa6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-        subjectsCount: 5,
-        totalAudioCount: 30
+      name: "Textile Technology",
+      description: "",
+      imageUrl: "",
+      subjectsCount: 5,
+      totalAudioCount: 30
       },
       {
-        name: "Textile Dyeing & Printing",
-        description: "Master the art and science of coloration and surface design for textiles.",
-        imageUrl: "https://images.unsplash.com/photo-1596464148416-e599dc56f4d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-        subjectsCount: 5,
-        totalAudioCount: 30
+      name: "Man Made Textile Technology",
+      description: "",
+      imageUrl: "",
+      subjectsCount: 5,
+      totalAudioCount: 30
       },
       {
-        name: "Apparel Manufacturing",
-        description: "Discover the processes behind garment production from pattern making to assembly.",
-        imageUrl: "https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-        subjectsCount: 5,
-        totalAudioCount: 30
+      name: "Technical Textiles",
+      description: "",
+      imageUrl: "",
+      subjectsCount: 5,
+      totalAudioCount: 30
       },
       {
-        name: "Sustainable Textiles",
-        description: "Explore eco-friendly materials, processes, and innovations in the textile industry.",
-        imageUrl: "https://images.unsplash.com/photo-1572731316712-a2d7c1fdf73c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-        subjectsCount: 5,
-        totalAudioCount: 30
-      }
+      name: "Fashion Technology",
+      description: "",
+      imageUrl: "",
+      subjectsCount: 5,
+      totalAudioCount: 30
+      },
+      
     ];
 
     programsData.forEach(program => {
@@ -212,92 +213,30 @@ export class MemStorage implements IStorage {
       this.programs.set(id, { ...program, id });
     });
 
-    // Create 5 subjects for Fiber Science program
+    // Create 5 subjects for Textile Chemistry program
     const fiberScienceSubjects: InsertSubject[] = [
       {
         programId: 1,
-        name: "Natural Fibers",
-        description: "In-depth exploration of cotton, wool, silk, linen, and other natural textile fibers.",
-        imageUrl: "https://images.unsplash.com/photo-1595511890410-3c7d8399226b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
+        name: "Chemistry of Natural Fibers",
+        description: "",
+        imageUrl: "",
         chaptersCount: 6,
-        durationHours: 10
+        durationHours: 0.5
       },
-      {
-        programId: 1,
-        name: "Synthetic Fibers",
-        description: "Comprehensive study of polyester, nylon, acrylic, and other man-made fibers.",
-        imageUrl: "https://images.unsplash.com/photo-1618372063992-8c3d0d451841?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-        chaptersCount: 6,
-        durationHours: 12
-      },
-      {
-        programId: 1,
-        name: "Fiber Properties",
-        description: "Analysis of tensile strength, elasticity, absorbency, and other critical fiber characteristics.",
-        imageUrl: "https://images.unsplash.com/photo-1606913419156-31cf2822659b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-        chaptersCount: 6,
-        durationHours: 9
-      },
-      {
-        programId: 1,
-        name: "Fiber Identification",
-        description: "Methods and techniques for identifying fiber types through microscopy and chemical tests.",
-        imageUrl: "https://images.unsplash.com/photo-1580893246395-52aead8960dc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-        chaptersCount: 6,
-        durationHours: 11
-      },
-      {
-        programId: 1,
-        name: "Advanced Fibers",
-        description: "Exploration of high-performance and specialty fibers used in technical textiles.",
-        imageUrl: "https://images.unsplash.com/photo-1620331311520-246422e5a252?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-        chaptersCount: 6,
-        durationHours: 14
-      }
+      
+      // {
+      //   programId: 1,
+      //   name: "",
+      //   description: "",
+      //   imageUrl: "",
+      //   chaptersCount: 6,
+      //   durationHours: 14
+      // }
     ];
 
     // Add fabric construction subjects
     const fabricSubjects: InsertSubject[] = [
-      {
-        programId: 2,
-        name: "Weaving Fundamentals",
-        description: "Basic principles of warp and weft interlacement in fabric production.",
-        imageUrl: "https://images.unsplash.com/photo-1606830733744-0ad778449672?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-        chaptersCount: 6,
-        durationHours: 8
-      },
-      {
-        programId: 2,
-        name: "Knitting Technology",
-        description: "Comprehensive study of weft and warp knitting principles and structures.",
-        imageUrl: "https://images.unsplash.com/photo-1620139283213-cff4ddeadb63?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-        chaptersCount: 6,
-        durationHours: 7
-      },
-      {
-        programId: 2,
-        name: "Non-woven Textiles",
-        description: "Processes and applications of fibrous assemblies bonded by mechanical, chemical, or thermal means.",
-        imageUrl: "https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-        chaptersCount: 6,
-        durationHours: 10
-      },
-      {
-        programId: 2,
-        name: "Textile Testing",
-        description: "Methods for evaluating fabric performance, quality, and durability.",
-        imageUrl: "https://images.unsplash.com/photo-1598204946632-6a61656096e3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-        chaptersCount: 6,
-        durationHours: 9
-      },
-      {
-        programId: 2,
-        name: "Advanced Structures",
-        description: "Exploration of complex weaves, 3D fabrics, and technical textile structures.",
-        imageUrl: "https://images.unsplash.com/photo-1620628193165-5c9980f3e4be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=500",
-        chaptersCount: 6,
-        durationHours: 6
-      }
+      
     ];
 
     // Add all subjects
@@ -310,64 +249,64 @@ export class MemStorage implements IStorage {
     const naturalFibersChapters: InsertChapter[] = [
       {
         subjectId: 1,
-        name: "Cotton",
-        description: "Comprehensive study of cotton fiber properties, production, and applications.",
+        name: "Unit 01. Introduction to Textiles",
+        description: "",
         iconType: "leaf",
-        audioCount: 6,
+        audioCount: 5,
         durationMinutes: 90,
-        progress: 35,
+        ////progress: 35,
         completedLessons: 2
       },
       {
         subjectId: 1,
-        name: "Wool",
-        description: "Detailed exploration of wool fiber characteristics, processing, and end uses.",
+        name: "Unit 02. Textile Fibres",
+        description: "",
         iconType: "scissors",
         audioCount: 6,
         durationMinutes: 120,
-        progress: 15,
+        ////progress: 15,
         completedLessons: 1
       },
       {
         subjectId: 1,
-        name: "Silk",
-        description: "Deep dive into silk fiber production, properties, and luxury applications.",
+        name: "Unit 03. Cotton Fibre",
+        description: "",
         iconType: "filter",
         audioCount: 6,
         durationMinutes: 108,
-        progress: 50,
+        ////progress: 50,
         completedLessons: 3
       },
       {
         subjectId: 1,
-        name: "Linen",
-        description: "Comprehensive study of flax fibers, linen production, and textile applications.",
+        name: "Unit 04. Unconventional Natural Fibres",
+        description: "",
         iconType: "flower",
         audioCount: 6,
         durationMinutes: 90,
-        progress: 0,
+        //progress: 0,
         completedLessons: 0
       },
       {
         subjectId: 1,
-        name: "Hemp and Jute",
-        description: "Analysis of bast fibers, their properties, and industrial applications.",
+        name: "Unit 05. Wool Fibre",
+        description: "",
         iconType: "sprout",
         audioCount: 6,
         durationMinutes: 120,
-        progress: 0,
+        //progress: 0,
         completedLessons: 0
       },
       {
         subjectId: 1,
-        name: "Emerging Natural Fibers",
-        description: "Introduction to novel natural fibers and their potential in sustainable textiles.",
-        iconType: "globe",
+        name: "Unit 06. Silk Fibre",
+        description: "",
+        iconType: "",
         audioCount: 6,
-        durationMinutes: 108,
-        progress: 65,
-        completedLessons: 4
-      }
+        durationMinutes: 120,
+        //progress: 0,
+        completedLessons: 0
+      },
     ];
 
     // Add chapters
@@ -376,60 +315,388 @@ export class MemStorage implements IStorage {
       this.chapters.set(id, { ...chapter, id });
     });
 
-    // Create audio lessons for Cotton chapter
+    // Create audio lessons for Unit 01. Introduction to Textiles chapter
     const cottonLessons: InsertAudioLesson[] = [
       {
         chapterId: 1,
-        title: "Cotton Cultivation",
-        description: "Global cotton farming practices and sustainable agricultural methods",
+        title: "FLOW CHART OF YARN MANUFACTURING",
+        description: "",
         durationSeconds: 300,
-        completed: true,
-        audioUrl: "/audio/cotton/cultivation.mp3"
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/yarn_manufacturing_audio.mp3"
       },
       {
         chapterId: 1,
-        title: "Fiber Structure",
-        description: "Microscopic analysis of cotton fiber morphology and cellular structure",
+        title: "FLOW CHART OF WEAVING",
+        description: "",
         durationSeconds: 390,
-        completed: true,
-        audioUrl: "/audio/cotton/structure.mp3"
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/weaving_process.mp3"
       },
       {
         chapterId: 1,
-        title: "Physical Properties",
-        description: "Tensile strength, elasticity, and absorbency characteristics of cotton",
+        title: "FLOW CHART OF CHEMICAL PROCESSING",
+        description: "",
         durationSeconds: 435,
         completed: false,
-        audioUrl: "/audio/cotton/properties.mp3"
+        audioUrl: "/audio/program1/subject1/chapter1/chemical_processing.mp3"
       },
       {
         chapterId: 1,
-        title: "Cotton Processing",
-        description: "From harvesting to ginning and bale formation in the cotton industry",
+        title: "FLOW CHART OF GARMENT MANUFACTURING PROCESS",
+        description: "",
         durationSeconds: 405,
         completed: false,
-        audioUrl: "/audio/cotton/processing.mp3"
+        audioUrl: "/audio/program1/subject1/chapter1/garment_manufacturing.mp3"
       },
       {
         chapterId: 1,
-        title: "Cotton Varieties",
-        description: "Exploring different species and varieties of cotton grown worldwide",
+        title: "INTRODUCTION TO TEXTILES",
+        description: "",
         durationSeconds: 330,
         completed: false,
-        audioUrl: "/audio/cotton/varieties.mp3"
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
       },
-      {
-        chapterId: 1,
-        title: "Organic Cotton",
-        description: "Sustainable practices in organic cotton farming and certification",
-        durationSeconds: 370,
-        completed: false,
-        audioUrl: "/audio/cotton/organic.mp3"
-      }
+      
     ];
 
     // Add audio lessons
     cottonLessons.forEach(lesson => {
+      const id = this.audioLessonsCounter++;
+      this.audioLessons.set(id, { ...lesson, id });
+    });
+  
+  // Create audio lessons for Unit 02. Textile Fibres
+  const unit2: InsertAudioLesson[] = [
+      {
+        chapterId: 2,
+        title: "01. Degree of Polymerization",
+        description: "",
+        durationSeconds: 300,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/yarn_manufacturing_audio.mp3"
+      },
+      {
+        chapterId: 2,
+        title: "02. Cohesive Energy Density",
+        description: "",
+        durationSeconds: 390,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/weaving_process.mp3"
+      },
+      {
+        chapterId: 2,
+        title: "03. MOISTURE REGAIN AND MOISTURE CONTENT",
+        description: "",
+        durationSeconds: 435,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/chemical_processing.mp3"
+      },
+      {
+        chapterId: 2,
+        title: "04. Classification of textile Fibres",
+        description: "",
+        durationSeconds: 405,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/garment_manufacturing.mp3"
+      },
+      {
+        chapterId: 2,
+        title: "05. ESSENTIAL PROPERTIES OF FIBRE",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+      {
+        chapterId: 2,
+        title: "06. Desirable Properties of fibre",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+      {
+        chapterId: 2,
+        title: "07. ORIENTATION",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+    ];
+
+    // Add audio lessons
+    unit2.forEach(lesson => {
+      const id = this.audioLessonsCounter++;
+      this.audioLessons.set(id, { ...lesson, id });
+    });
+  // Create audio lessons for Unit 03. Cotton Fibre
+  const CottonFibre: InsertAudioLesson[] = [
+      {
+        chapterId: 3,
+        title: "01. CULTIVATION OF COTTON",
+        description: "",
+        durationSeconds: 300,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/yarn_manufacturing_audio.mp3"
+      },
+      {
+        chapterId: 3,
+        title: "02. BOTANICAL CLASSIFICATION OF COTTON",
+        description: "",
+        durationSeconds: 390,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/weaving_process.mp3"
+      },
+      {
+        chapterId: 3,
+        title: "03. MORPHOLOGICAL STRUCTURE OF COTTON",
+        description: "",
+        durationSeconds: 435,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/chemical_processing.mp3"
+      },
+      {
+        chapterId: 3,
+        title: "04. CHEMICAL COMPOSITION OF COTTON",
+        description: "",
+        durationSeconds: 405,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/garment_manufacturing.mp3"
+      },
+      {
+        chapterId: 3,
+        title: "05. Crystal structure of cellulose",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+      {
+        chapterId: 3,
+        title: "06. REACTIONS OF CELLULOSE",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+      {
+        chapterId: 3,
+        title: "07. Physical and chemical properties of Cotton",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+    ];
+
+    // Add audio lessons
+    CottonFibre.forEach(lesson => {
+      const id = this.audioLessonsCounter++;
+      this.audioLessons.set(id, { ...lesson, id });
+    });
+    // Create audio lessons for Unit 04. Unconventional Natural Fibres
+    const UnconventionalNaturalFibres: InsertAudioLesson[] = [
+      {
+        chapterId: 4,
+        title: "01. General Information About Jute Fibre",
+        description: "",
+        durationSeconds: 300,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/yarn_manufacturing_audio.mp3"
+      },
+      {
+        chapterId: 4,
+        title: "02. Chemical Composition of Jute Fibre",
+        description: "",
+        durationSeconds: 390,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/weaving_process.mp3"
+      },
+      {
+        chapterId: 4,
+        title: "03. Cultivation of Jute Fibre",
+        description: "",
+        durationSeconds: 435,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/chemical_processing.mp3"
+      },
+      {
+        chapterId: 4,
+        title: "04. Retting of Jute Fibre",
+        description: "",
+        durationSeconds: 405,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/garment_manufacturing.mp3"
+      },
+      {
+        chapterId: 4,
+        title: "05. Morphological Structure of Jute Fibre",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+      {
+        chapterId: 4,
+        title: "06. Physical and Chemical Properties of Jute Fibre",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+      {
+        chapterId: 4,
+        title: "07. History of Flax Fibres",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+      {
+        chapterId: 4,
+        title: "08. Cultivation and Retting of Flax Fibre",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+      {
+        chapterId: 4,
+        title: "09. Physical and Chemical Properties of Flax Fibre",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+    ];
+
+    // Add audio lessons
+    UnconventionalNaturalFibres.forEach(lesson => {
+      const id = this.audioLessonsCounter++;
+      this.audioLessons.set(id, { ...lesson, id });
+    });
+    // Create audio lessons for Unit 05. Wool Fibre
+    const WoolFibre: InsertAudioLesson[] = [
+      {
+        chapterId: 5,
+        title: "01. Grading of Wool Fibre",
+        description: "",
+        durationSeconds: 300,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/yarn_manufacturing_audio.mp3"
+      },
+      {
+        chapterId: 5,
+        title: "02. Morphological Structure of wool Fibre",
+        description: "",
+        durationSeconds: 390,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/weaving_process.mp3"
+      },
+      {
+        chapterId: 5,
+        title: "03. Chemical Composition of wool fibre",
+        description: "",
+        durationSeconds: 435,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/chemical_processing.mp3"
+      },
+      {
+        chapterId: 5,
+        title: "04. Chemical Structure of Wool Fibre",
+        description: "",
+        durationSeconds: 405,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/garment_manufacturing.mp3"
+      },
+      {
+        chapterId: 5,
+        title: "05. Different types of forces are present in wool fibres",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+      {
+        chapterId: 5,
+        title: "06. Physical and Chemical Properties of Wool Fibre",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+      
+    ];
+
+    // Add audio lessons
+    WoolFibre.forEach(lesson => {
+      const id = this.audioLessonsCounter++;
+      this.audioLessons.set(id, { ...lesson, id });
+    });
+    // Create audio lessons for Unit 06. Silk Fibre
+    const SilkFibre: InsertAudioLesson[] = [
+      {
+        chapterId: 6,
+        title: "01. Varieties of Silk Fibre",
+        description: "",
+        durationSeconds: 300,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/yarn_manufacturing_audio.mp3"
+      },
+      {
+        chapterId: 6,
+        title: "02. Sericulture of Silk",
+        description: "",
+        durationSeconds: 390,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/weaving_process.mp3"
+      },
+      {
+        chapterId: 6,
+        title: "03. Production Of Raw Silk",
+        description: "",
+        durationSeconds: 435,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/chemical_processing.mp3"
+      },
+      {
+        chapterId: 6,
+        title: "04. Morphological Structure Of Silk",
+        description: "",
+        durationSeconds: 405,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/garment_manufacturing.mp3"
+      },
+      {
+        chapterId: 6,
+        title: "05. Chemical composition and chemical structure of Silk",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+      {
+        chapterId: 6,
+        title: "06. Different types of forces are present in silk fibres",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+      {
+        chapterId: 6,
+        title: "07. Physical and Chemical Properties of Silk",
+        description: "",
+        durationSeconds: 330,
+        completed: false,
+        audioUrl: "/audio/program1/subject1/chapter1/introduction_to_textiles.mp3"
+      },
+    ];
+
+    // Add audio lessons
+    SilkFibre.forEach(lesson => {
       const id = this.audioLessonsCounter++;
       this.audioLessons.set(id, { ...lesson, id });
     });

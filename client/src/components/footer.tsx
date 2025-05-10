@@ -1,6 +1,5 @@
 import { Link } from 'wouter';
 import { Scissors, Shirt, Info, Book, PhoneCall } from 'lucide-react';
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaPinterestP } from 'react-icons/fa';
 
 export function Footer() {
   return (
@@ -19,23 +18,13 @@ export function Footer() {
               </div>
             </div>
             <p className="text-gray-600 text-sm">
-              Premier textile education platform with comprehensive audio courses for global textile professionals.
+              Dr. Sachin M. Landage. 
+              Dept. of Textiles, D.K.T.E. Society's, Textile & Engineering Institute, Ichalkaranji, Maharashtra, India.
+               
             </p>
             <div className="mt-4 flex space-x-4">
               <a href="#" className="text-gray-500 hover:text-primary transition">
-                <FaFacebookF />
-              </a>
-              <a href="#" className="text-gray-500 hover:text-primary transition">
-                <FaTwitter />
-              </a>
-              <a href="#" className="text-gray-500 hover:text-primary transition">
-                <FaInstagram />
-              </a>
-              <a href="#" className="text-gray-500 hover:text-primary transition">
-                <FaLinkedinIn />
-              </a>
-              <a href="#" className="text-gray-500 hover:text-primary transition">
-                <FaPinterestP />
+                Email - smlandage@dkte.ac.in 
               </a>
             </div>
           </div>
@@ -43,18 +32,18 @@ export function Footer() {
           <div>
             <h4 className="font-medium text-gray-900 mb-4">Programs</h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li><Link href="/programs/1"><div className="hover:text-primary transition">Fiber Science</div></Link></li>
-              <li><Link href="/programs/2"><div className="hover:text-primary transition">Fabric Construction</div></Link></li>
-              <li><Link href="/programs/3"><div className="hover:text-primary transition">Textile Dyeing & Printing</div></Link></li>
-              <li><Link href="/programs/4"><div className="hover:text-primary transition">Apparel Manufacturing</div></Link></li>
-              <li><Link href="/programs/5"><div className="hover:text-primary transition">Sustainable Textiles</div></Link></li>
+              <li><Link href="/programs/1"><div className="hover:text-primary transition">Textile Chemistry</div></Link></li>
+              <li><Link href="/programs/2"><div className="hover:text-primary transition">Textile Technology</div></Link></li>
+              <li><Link href="/programs/3"><div className="hover:text-primary transition">Man Made Textile Technology</div></Link></li>
+              <li><Link href="/programs/4"><div className="hover:text-primary transition">Technical Textiles</div></Link></li>
+              <li><Link href="/programs/5"><div className="hover:text-primary transition">Fashion Technology</div></Link></li> 
             </ul>
           </div>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-4">Resources</h4>
+            <h4 className="font-medium text-gray-900 mb-4"></h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li>
+              {/* <li>
                 <a href="#" className="flex items-center hover:text-primary transition">
                   <Book className="h-3.5 w-3.5 mr-2" />
                   <span>Textile Dictionary</span>
@@ -83,33 +72,24 @@ export function Footer() {
                   <PhoneCall className="h-3.5 w-3.5 mr-2" />
                   <span>Expert Consultation</span>
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
           
           <div>
-            <h4 className="font-medium text-gray-900 mb-4">Company</h4>
+            <h4 className="font-medium text-gray-900 mb-4"></h4>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li><a href="#" className="hover:text-primary transition">About TextileGuru</a></li>
+              {/* <li><a href="#" className="hover:text-primary transition">About TextileGuru</a></li>
               <li><a href="#" className="hover:text-primary transition">Our Experts</a></li>
               <li><a href="#" className="hover:text-primary transition">Industry Partners</a></li>
               <li><a href="#" className="hover:text-primary transition">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-primary transition">Terms of Service</a></li>
+              <li><a href="#" className="hover:text-primary transition">Terms of Service</a></li> */}
             </ul>
           </div>
         </div>
         
         <div className="mt-8 pt-6 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">© {new Date().getFullYear()} TextileGuru. All rights reserved.</p>
-          <div className="mt-4 md:mt-0">
-            <select className="px-3 py-1 bg-gray-100 rounded-md text-sm text-gray-700 focus:outline-none">
-              <option value="en">English</option>
-              <option value="es">Español</option>
-              <option value="fr">Français</option>
-              <option value="de">Deutsch</option>
-              <option value="zh">中文</option>
-            </select>
-          </div>
         </div>
       </div>
     </footer>

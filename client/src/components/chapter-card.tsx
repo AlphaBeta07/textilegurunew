@@ -2,7 +2,6 @@ import { Link, useLocation } from 'wouter';
 import { Headphones, Clock, Book, MessageSquare, BookOpen, Mic, Pen } from 'lucide-react';
 import type { Chapter } from '@shared/schema';
 import { motion } from 'framer-motion';
-import { Progress } from '@/components/ui/progress';
 
 type ChapterCardProps = {
   chapter: Chapter;
@@ -53,17 +52,7 @@ export function ChapterCard({ chapter, programId, subjectId }: ChapterCardProps)
               {Math.floor(chapter.durationMinutes / 60)}.{chapter.durationMinutes % 60 === 0 ? '0' : chapter.durationMinutes % 60} Hours
             </span>
           </div>
-          <div className="mt-4">
-            <Progress 
-              value={chapter.progress} 
-              className="h-2 bg-gray-100" 
-              indicatorClassName="bg-gradient-to-r from-primary to-accent" 
-            />
-          </div>
-          <div className="mt-2 flex justify-between text-xs text-gray-500">
-            <span>Progress: {chapter.progress}%</span>
-            <span>{chapter.completedLessons}/{chapter.audioCount} completed</span>
-          </div>
+          
         </div>
       </div>
     </motion.div>

@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
-import { VisualSearch } from '@/components/visual-search';
 import { ProgramCard } from '@/components/program-card';
 import { BreadcrumbNavigation } from '@/components/breadcrumb-navigation';
 import { LayoutGrid, List } from 'lucide-react';
@@ -23,8 +22,6 @@ export default function Home() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <BreadcrumbNavigation items={{}} />
         
-        <VisualSearch />
-        
         <motion.section 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -32,7 +29,7 @@ export default function Home() {
           className="fade-in"
         >
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-sans font-bold text-gray-900">Popular Learning Programs</h2>
+            <h2 className="text-2xl font-sans font-bold text-gray-900">Programs</h2>
             <div className="flex space-x-2">
               <button 
                 className={`p-2 rounded-lg hover:bg-gray-100 text-gray-600 ${viewType === 'grid' ? 'bg-gray-100' : ''}`}

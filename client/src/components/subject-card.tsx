@@ -23,14 +23,6 @@ export function SubjectCard({ subject, programId }: SubjectCardProps) {
       onClick={goToSubject}
     >
       <div className="subject-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer h-full border border-border">
-        <div className="relative">
-          <img 
-            src={subject.imageUrl} 
-            alt={subject.name} 
-            className="w-full h-40 object-cover" 
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-        </div>
         <div className="p-5">
           <h3 className="text-lg font-heading font-semibold mb-2 gradient-text">{subject.name}</h3>
           <p className="text-gray-600 text-sm mb-3">{subject.description}</p>
