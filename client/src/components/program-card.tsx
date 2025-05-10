@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'wouter';
+import { useLocation } from 'wouter';
 import { Headphones, BookOpen } from 'lucide-react';
 import type { Program } from '@shared/schema';
 import { motion } from 'framer-motion';
@@ -24,7 +24,6 @@ export function ProgramCard({ program }: ProgramCardProps) {
       <div className="program-card bg-white rounded-xl shadow-md overflow-hidden cursor-pointer h-full border border-border">
         <div className="p-5">
           <h3 className="text-lg font-heading font-semibold mb-2 gradient-text">{program.name}</h3>
-          <p className="text-gray-600 text-sm mb-4">{program.description}</p>
           <div className="flex items-center justify-between">
             <span className="flex items-center text-xs font-medium bg-primary/10 text-primary px-2.5 py-1 rounded-full">
               <BookOpen className="mr-1 h-3 w-3" />

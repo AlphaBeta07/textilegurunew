@@ -31,10 +31,6 @@ export function SubjectCard({ subject, programId }: SubjectCardProps) {
               <BookText className="mr-1 h-3 w-3" />
               {subject.chaptersCount} Chapters
             </span>
-            <span className="flex items-center text-sm text-gray-500">
-              <Clock className="mr-2 h-4 w-4" />
-              {subject.durationHours} Hours
-            </span>
           </div>
         </div>
       </div>

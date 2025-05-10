@@ -6,7 +6,7 @@ import { z } from "zod";
 export const programs = pgTable("programs", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
-  description: text("description").notNull(),
+  //description: text("description").notNull(),
   imageUrl: text("image_url").notNull(),
   subjectsCount: integer("subjects_count").notNull().default(5),
   totalAudioCount: integer("total_audio_count").notNull().default(0),
@@ -24,7 +24,7 @@ export const subjects = pgTable("subjects", {
   description: text("description").notNull(),
   imageUrl: text("image_url").notNull(),
   chaptersCount: integer("chapters_count").notNull().default(6),
-  durationHours: integer("duration_hours").notNull(),
+  //durationHours: integer("duration_hours").notNull(),
 });
 
 export const insertSubjectSchema = createInsertSchema(subjects).omit({
@@ -36,8 +36,8 @@ export const chapters = pgTable("chapters", {
   id: serial("id").primaryKey(),
   subjectId: integer("subject_id").notNull(),
   name: text("name").notNull(),
-  description: text("description").notNull(),
-  iconType: text("icon_type").notNull(),
+  //description: text("description").notNull(),
+  //iconType: text("icon_type").notNull(),
   audioCount: integer("audio_count").notNull().default(6),
   durationMinutes: integer("duration_minutes").notNull(),
   progress: integer("progress").notNull().default(0), // 0-100 percent
@@ -53,9 +53,9 @@ export const audioLessons = pgTable("audio_lessons", {
   id: serial("id").primaryKey(),
   chapterId: integer("chapter_id").notNull(),
   title: text("title").notNull(),
-  description: text("description").notNull(),
-  durationSeconds: integer("duration_seconds").notNull(),
-  completed: boolean("completed").notNull().default(false),
+  //description: text("description").notNull(),
+  //durationSeconds: integer("duration_seconds").notNull(),
+  //completed: boolean("completed").notNull().default(false),
   audioUrl: text("audio_url").notNull(),
 });
 

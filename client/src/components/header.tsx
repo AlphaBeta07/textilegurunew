@@ -1,14 +1,9 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'wouter';
-import { Search, Menu, Scissors, Shirt } from 'lucide-react';
+import { Link } from 'wouter';
+import { Scissors, Shirt } from 'lucide-react';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [location] = useLocation();
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">

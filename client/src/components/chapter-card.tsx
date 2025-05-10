@@ -41,15 +41,10 @@ export function ChapterCard({ chapter, programId, subjectId }: ChapterCardProps)
             </div>
             <h3 className="text-lg font-heading font-semibold gradient-text">{chapter.name}</h3>
           </div>
-          <p className="text-gray-600 text-sm mb-4">{chapter.description}</p>
           <div className="flex items-center justify-between text-sm">
             <span className="flex items-center text-gray-500">
               <Headphones className="mr-2 h-4 w-4" />
               {chapter.audioCount} Audio Lessons
-            </span>
-            <span className="flex items-center text-gray-500">
-              <Clock className="mr-2 h-4 w-4" />
-              {Math.floor(chapter.durationMinutes / 60)}.{chapter.durationMinutes % 60 === 0 ? '0' : chapter.durationMinutes % 60} Hours
             </span>
           </div>
           

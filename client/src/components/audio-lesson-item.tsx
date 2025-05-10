@@ -1,4 +1,4 @@
-import { Play, CheckCircle, Circle } from 'lucide-react';
+import { Play } from 'lucide-react';
 import type { AudioLesson } from '@shared/schema';
 import { motion } from 'framer-motion';
 
@@ -35,17 +35,6 @@ export function AudioLessonItem({ lesson, onClick, isActive = false }: AudioLess
       </div>
       <div className="flex-1">
         <h4 className={`font-medium ${isActive ? 'text-primary font-heading' : ''}`}>{lesson.title}</h4>
-        <p className="text-sm text-gray-600">{lesson.description}</p>
-      </div>
-      <div className="text-right flex items-center">
-        <span className="text-sm text-gray-500 mr-3">{formatDuration(lesson.durationSeconds)}</span>
-        <span className="">
-          {lesson.completed ? (
-            <CheckCircle className="text-primary h-5 w-5" />
-          ) : (
-            <Circle className="text-gray-300 h-5 w-5" />
-          )}
-        </span>
       </div>
     </motion.li>
   );
