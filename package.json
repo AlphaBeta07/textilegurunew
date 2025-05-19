@@ -1,5 +1,6 @@
 {
   "name": "textileguru",
+  "homepage": "http://textileguru.vercel.app",
   "version": "1.0.0",
   "type": "module",
   "license": "MIT",
